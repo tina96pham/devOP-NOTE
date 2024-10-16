@@ -1,15 +1,16 @@
 # Getting Started
 ## Table of Content
-[1. Containerization an application](#1-containerization-an-application)
-[2. Update the application](#2-uodate-the-app)
-[3. Share the application](#3-build-the-application)
-[4. Persist DB](#4-persist-db)
-[5. Use bind mount](#5-use-bind-mount)
-[6. Multi-container applictaion](#6.multi-container-application)
-[7. Best practice](#7-best-practice)
-[9. Intro to container orchestration](#9-intro-to-container-orchestration)
+[1. Containerization an application](#1-containerization-an-application)<br>
+[2. Update the application](#2-update-the-application)<br>
+[3. Share the application](#3-share-the-application)<br>
+[4. Persist DB](#4-persist-db)<br>
+[5. Use bind mount](#5-use-bind-mount)<br>
+[6. Multi-container applictaion](#6-multi-container-application)<br>
+[7. Best practice](#7-best-practice)<br>
+[8. Intro to container orchestration](#8-intro-to-container-orchestration)<br>
 
-## 1. Containerization an application
+<details>
+  <summary><a href="#containerization-an-application">Click to expand: 1. Containerization an application</summary>
 - This is the schema of source code repo
 ```
 ├── getting-started-app/
@@ -38,7 +39,7 @@ In the repo root directory run the following command
 # -p = publish - create port mapping
 # 127.0.0.1:3000:3000 = host port:container
 ```
-
+</details>
 
 ## 2. Update the application
 - Update in source code need a new container<br>
@@ -183,7 +184,7 @@ Accessing the Applications
 - Use `docker-compose ps` to view the status of the containers.
 
 
-## 9. Intro to container orchestration
+## 8. Intro to container orchestration
 - Docker compose is only ideal for local development and simple deployments with a single compose.yml
 - For more complex deployments, use container orchestration tools like Kubernetes, Docker Swarm, or Apache Mesos
     &rarr; Multiple YAML files (Deployment, Service, ConfigMap, etc.)
