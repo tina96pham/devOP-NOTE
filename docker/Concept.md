@@ -88,6 +88,7 @@ EXPOSE 8000
 ENV DJANGO_ENV=production
 
 # Step 7: Run the application
+RUN pip install gunicorn
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "myproject.wsgi:application"]
 ```
 

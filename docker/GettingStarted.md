@@ -3,16 +3,14 @@
 [1. Containerization an application](#1-containerization-an-application)<br>
 [2. Update the application](#2-update-the-application)<br>
 [3. Share the application](#3-share-the-application)<br>
-[4. Persist DB](#4-persist-db)<br>
-[5. Use bind mount](#5-use-bind-mount)<br>
-[6. Multi-container applictaion](#6-multi-container-application)<br>
-[7. Best practice](#7-best-practice)<br>
-[8. Intro to container orchestration](#8-intro-to-container-orchestration)<br>
+[4. Multi-container applictaion](#4-multi-container-application)<br>
+[5. Best practice](#5-best-practice)<br>
+[6. Intro to container orchestration](#6-intro-to-container-orchestration)<br>
 
 <details>
-  <summary><a href="#containerization-an-application">Click to expand: 1. Containerization an application</summary>
+  <summary><a href="#1-containerization-an-application"> 1. Containerization an application</summary>
 
-- This is the schema of source code repo
+This is the schema of source code repo
 ```
 ├── getting-started-app/
 │ ├── .dockerignore
@@ -28,11 +26,67 @@ cd /path/to/<getting-started-app>
 touch Dockerfile
 ```
 **Step 2**: write Dockerfile (refer to concept) <br>
+For Angular
+```dockerfile
+# Angular Dockerfile
+FROM node:14 AS build
+WORKDIR /app
+COPY ./src ./src
+COPY package.json ./
+RUN npm install
+RUN npm run build --prod
+
+FROM nginx:alpine
+COPY --from=build /app/dist/angular-app /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+For Django
+```dockerfile
+# Django Dockerfile
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /code
+
+COPY requirements.txt /code/
+RUN pip install -r requirements.txt
+
+COPY . /code/
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+```
+
+For postgres
+
+```dockerfile
+# Use the official PostgreSQL image as the base image
+FROM postgres:13
+
+# Set environment variables for the database
+ENV POSTGRES_DB=mydatabase
+ENV POSTGRES_USER=myuser
+ENV POSTGRES_PASSWORD=mypassword
+
+# Copy initialization scripts into the Docker image
+COPY init.sql /docker-entrypoint-initdb.d/
+
+# Expose PostgreSQL port
+EXPOSE 5432
+
+# The default command to run PostgreSQL
+CMD ["postgres"]
+```
 **Step 3**: Build the image <br>
 In the repo root directory run the following command
 ```bash
  docker build -t getting-started .
 ```
+
+
 **Step 4**: Run the image
 ```bash
  docker run -dp <127.0.0.1:3000:3000> <getting-started>
@@ -41,9 +95,12 @@ In the repo root directory run the following command
 # 127.0.0.1:3000:3000 = host port:container
 ```
 </details>
+***
 
-## 2. Update the application
-- Update in source code need a new container<br>
+<details>
+<summary><href="#2-update-the-application"> 2. Update the application </summary>
+
+Update in source code need a new container<br>
 **DO NOT** start the new container while your old container is still running <br>
     &rarr; The reason is that the old container is already using the host's port 3000 and only one process on the machine (containers included) can listen to a specific port.<br>
 **Step 1**: Obtain ID of the container from the list container
@@ -67,9 +124,13 @@ docker build -t <getting-started> .
 docker run -dp <127.0.0.1:3000:3000> <getting-start>
 
 ```
+</details>
 
-## 3. Share the application
-- 
+***
+
+<details>
+<summary><href="#3-share-the-application"> 3. Share the application </summary>
+
 **Step 1**: Sign in to Docker Hub 
 ```bash
 docker login -u <your-username>
@@ -83,14 +144,18 @@ docker tag getting-started <your-username>/getting-started
 docker push <your-username>/getting-started:tagname 
 # tagname will default to latest if there none
 ```
+</details>
 
-## 4. Persist DB
-- 
-## 5. Use bind mount
-- Share a directory from the host's filesystem into the container.
-- Mount source code from hard drive into the container. 
-- Allow local development
-## 6. Multi-container application
+***
+<details>
+<summary><href="#4-multi-container-application"> 4. Multi-container application </summary>
+
+
+**Step 1:** Create the network
+```bash
+docker network create my_network
+```
+**Step 2:** Ensure each container has a dockerfile setup
 ```
 my_project/
 ├── docker-compose.yml
@@ -99,11 +164,7 @@ my_project/
 └── service2/
     └── Dockerfile
 ```
-**Step 1:** Create the network
-```bash
-docker network create my_network
-```
-**Step 2:** Ensure each container has a dockerfile setup
+
 **Step 3:** Create a docker-compose.yml File
 ```yaml
 version: '3'
@@ -176,16 +237,24 @@ docker network inspect <my_network>
 Accessing the Applications
 - Frontend (Angular): Open your browser and go to http://localhost:4200.
 - Backend (Django): The Django API will be available at http://localhost:8000.
+</details>
 
-## 7. Best practice
+***
+
+<details>
+<summary><href="#5-best-practice"> 5. Best practices</summary>
+
 - Use `docker-compose up --build` to build and start the containers.
 - Use `docker-compose down` to stop and remove the containers.
 - Use `docker-compose exec` to run a command inside a container.
 - Use `docker-compose logs` to view the logs of the containers.
 - Use `docker-compose ps` to view the status of the containers.
 
+</details>
 
-## 8. Intro to container orchestration
+<details>
+<summary><href="#6-intro-to-container-orchestration"> 6. Intro to container orchestration</summary>
+
 - Docker compose is only ideal for local development and simple deployments with a single compose.yml
 - For more complex deployments, use container orchestration tools like Kubernetes, Docker Swarm, or Apache Mesos
     &rarr; Multiple YAML files (Deployment, Service, ConfigMap, etc.)
