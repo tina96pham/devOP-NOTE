@@ -8,7 +8,7 @@
 [6. Intro to container orchestration](#6-intro-to-container-orchestration)<br>
 
 <details>
-  <summary><a href="#1-containerization-an-application"> 1. Containerization an application</summary>
+  <summary><a href="containerization-an-application"> 1. Containerization an application</summary>
 
 This is the schema of source code repo
 ```
