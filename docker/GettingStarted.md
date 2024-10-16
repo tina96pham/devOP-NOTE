@@ -11,6 +11,7 @@
 
 <details>
   <summary><a href="#containerization-an-application">Click to expand: 1. Containerization an application</summary>
+
 - This is the schema of source code repo
 ```
 ├── getting-started-app/
