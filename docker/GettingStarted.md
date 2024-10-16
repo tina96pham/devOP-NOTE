@@ -1,14 +1,7 @@
 # Getting Started
-## Table of Content
-[1. Containerization an application](#1-containerization-an-application)<br>
-[2. Update the application](#2-update-the-application)<br>
-[3. Share the application](#3-share-the-application)<br>
-[4. Multi-container applictaion](#4-multi-container-application)<br>
-[5. Best practice](#5-best-practice)<br>
-[6. Intro to container orchestration](#6-intro-to-container-orchestration)<br>
 
 <details>
-  <summary><a href="containerization-an-application"> 1. Containerization an application</summary>
+  <summary> <h2> 1. Containerization an application</h2></summary>
 
 This is the schema of source code repo
 ```
@@ -95,10 +88,10 @@ In the repo root directory run the following command
 # 127.0.0.1:3000:3000 = host port:container
 ```
 </details>
-***
+
 
 <details>
-<summary><href="#2-update-the-application"> 2. Update the application </summary>
+<summary><h2> Update the application</h2> </summary>
 
 Update in source code need a new container<br>
 **DO NOT** start the new container while your old container is still running <br>
@@ -126,10 +119,10 @@ docker run -dp <127.0.0.1:3000:3000> <getting-start>
 ```
 </details>
 
-***
+
 
 <details>
-<summary><href="#3-share-the-application"> 3. Share the application </summary>
+<summary><h2> 3. Share the application</h2> </summary>
 
 **Step 1**: Sign in to Docker Hub 
 ```bash
@@ -146,9 +139,9 @@ docker push <your-username>/getting-started:tagname
 ```
 </details>
 
-***
+
 <details>
-<summary><href="#4-multi-container-application"> 4. Multi-container application </summary>
+<summary><h2> 4. Multi-container application </h2> </summary>
 
 
 **Step 1:** Create the network
@@ -242,7 +235,7 @@ Accessing the Applications
 ***
 
 <details>
-<summary><href="#5-best-practice"> 5. Best practices</summary>
+<summary><h2> 5. Best practices</h2></summary>
 
 - Use `docker-compose up --build` to build and start the containers.
 - Use `docker-compose down` to stop and remove the containers.
@@ -251,6 +244,8 @@ Accessing the Applications
 - Use `docker-compose ps` to view the status of the containers.
 
 </details>
+
+
 
 <details>
 <summary><href="#6-intro-to-container-orchestration"> 6. Intro to container orchestration</summary>
