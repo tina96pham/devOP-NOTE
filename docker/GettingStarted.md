@@ -232,8 +232,6 @@ Accessing the Applications
 - Backend (Django): The Django API will be available at http://localhost:8000.
 </details>
 
-***
-
 <details>
 <summary><h2> 5. Best practices</h2></summary>
 
@@ -248,7 +246,7 @@ Accessing the Applications
 
 
 <details>
-<summary><href="#6-intro-to-container-orchestration"> 6. Intro to container orchestration</summary>
+<summary><h2> 6. Intro to container orchestration</summary>
 
 - Docker compose is only ideal for local development and simple deployments with a single compose.yml
 - For more complex deployments, use container orchestration tools like Kubernetes, Docker Swarm, or Apache Mesos
