@@ -1,7 +1,7 @@
 # Containers
 ## Table of Content
-[1. Introduction](#1-introduction)
-[2. Basic Concept](#2-basic-concept)
+[1. Introduction](#1-introduction)<br>
+[2. Basic Concept](#2-basic-concept)<br>
 
 
 ## 1. Introduction
@@ -12,7 +12,8 @@
 - Docker uses a client-server architecture that communicate with eah other through REST API
     &rarr; Docker client is the command line tool that interacts with the Docker daemon.<br>
     &rarr; Docker daemon is the background service that manages containers.<br>
-<img src="./assets/docker_architecture.png" alt="Docker architecture>
+
+<img src="./assets/docker_architecture.png" alt="Docker architecture">
 
 
 

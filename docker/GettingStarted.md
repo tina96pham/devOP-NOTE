@@ -252,7 +252,7 @@ Accessing the Applications
 - For more complex deployments, use container orchestration tools like Kubernetes, Docker Swarm, or Apache Mesos
     &rarr; Multiple YAML files (Deployment, Service, ConfigMap, etc.)
 
-<img src="./assets/dockervskubernetes.png" alt= "Docker vs Kubernetes>
+<img src="./assets/dockervskubernetes.png" alt= "Docker vs Kubernetes">
 
 Some popular container orchestration tools are:
 - Docker Swarm
