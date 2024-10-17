@@ -9,7 +9,7 @@
 - Separate applications from infrastructure for quick delivery <br>
     &rarr; package and run an application in a loosely isolated environment called container.<br>
     &rarr; container size and spec are standardized, which make them flexible and portable.<br>
-- Docker uses a client-server architecture that communicate with eah other through REST API
+- Docker uses a client-server architecture that communicate with eah other through REST API <br>
     &rarr; Docker client is the command line tool that interacts with the Docker daemon.<br>
     &rarr; Docker daemon is the background service that manages containers.<br>
 
@@ -51,7 +51,7 @@
 ### Registry
 - Docker registries stores Docker images
     &rarr; Docker Hub is the official Docker registry. <br>
-    &rarr; Amazon Elastic Container Registry (Amazon ECR)
+    &rarr; Amazon Elastic Container Registry (Amazon ECR)<br>
     &rarr; Azure Container Registry <br>
     &rarr; Google Container Registry<br>
 ### Dockerfile
