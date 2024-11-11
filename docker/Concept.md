@@ -25,7 +25,7 @@
     2. Build image
     3. Use an image to create running container
 
-## 2. Basic COncept
+## 2. Basic Concept
 ### Container
 -  Containers are isolated processes for each of the application's components &rarr; running instances of docker's image
 -  Each component - the frontend React app, the Python API engine, and the database = each container
@@ -40,7 +40,7 @@
         &rarr; Deleting one container won't affect any others. <br>
     - **Portable**: Containers can run anywhere! <br>
         &rarr; The container that runs on your development machine will work the same way in a data center or anywhere in the cloud!<br>
-- Container work on many types of OS and platforms while VM is 
+- Container is isolated process with all the files that an application needed to run eiwork on many types of OS and platforms while VM is an OS system with is
 ### Images
 -  A container image is a standardized package that includes all of the files, binaries, libraries, and configurations to run a container.
 - There are two important principles of images:
